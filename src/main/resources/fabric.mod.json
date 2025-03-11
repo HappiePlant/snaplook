@@ -3,17 +3,17 @@
 	"id": "snaplook",
 	"version": "${version}",
 	"name": "Snaplook",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Snaplook fabric mod",
 	"authors": [
-		"Me!"
+		"HappiePlant"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
+		"homepage": "https://happieplant.nl",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
-	"license": "CC0-1.0",
+	"license": "ARR",
 	"icon": "assets/snaplook/icon.png",
-	"environment": "*",
+	"environment": "client",
 	"entrypoints": {
 		"main": [
 			"nl.happieplant.snaplook.Snaplook"
