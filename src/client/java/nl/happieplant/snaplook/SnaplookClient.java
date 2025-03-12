@@ -15,32 +15,32 @@ public class SnaplookClient implements ClientModInitializer {
     private boolean holdingBack;
     private boolean holdingFront;
 
-    private static KeyBinding registerKeybind(String id) {
+    private static KeyBinding registerKeybind(String id, int key) {
         return KeyBindingHelper.registerKeyBinding(
                 new KeyBinding(
-                        "nl.happieplant.snaplook." + id,
+                        "key.nl.happieplant.snaplook." + id,
                         InputUtil.Type.KEYSYM,
-                        GLFW.GLFW_KEY_UNKNOWN,
-                        "nl.happieplant.snaplook.keybinds"
+                        key,
+                        "category.nl.happieplant.snaplook"
                 ));
     }
 
     private static boolean holdPerspective(MinecraftClient c, boolean holdingKey, KeyBinding key, Perspective perspective) {
         if (!holdingKey && key.isPressed()) {
             c.options.setPerspective(perspective);
-            return true;
+            holdingKey = true;
         }
         if (holdingKey && !key.isPressed()) {
             c.options.setPerspective(Perspective.FIRST_PERSON);
-            return false;
+            holdingKey = false;
         }
-        return false;
+        return holdingKey;
     }
 
     @Override
     public void onInitializeClient() {
-        holdBackKey = registerKeybind("hold_back");
-        holdFrontKey = registerKeybind("hold_front");
+        holdBackKey = registerKeybind("hold_back", GLFW.GLFW_KEY_R);
+        holdFrontKey = registerKeybind("hold_front", GLFW.GLFW_KEY_V);
 
         ClientTickEvents.END_CLIENT_TICK.register(c -> {
            holdingBack = holdPerspective(c, holdingBack, holdBackKey, Perspective.THIRD_PERSON_BACK);

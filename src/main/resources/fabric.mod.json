@@ -3,7 +3,7 @@
 	"id": "snaplook",
 	"version": "${version}",
 	"name": "Snaplook",
-	"description": "Snaplook fabric mod",
+	"description": "Hold R or V to quickly change your perspective",
 	"authors": [
 		"HappiePlant"
 	],
@@ -11,31 +11,18 @@
 		"homepage": "https://happieplant.nl",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
-	"license": "ARR",
+	"license": "CC0-1.0",
 	"icon": "assets/snaplook/icon.png",
 	"environment": "client",
 	"entrypoints": {
-		"main": [
-			"nl.happieplant.snaplook.Snaplook"
-		],
 		"client": [
 			"nl.happieplant.snaplook.SnaplookClient"
 		]
 	},
-	"mixins": [
-		"snaplook.mixins.json",
-		{
-			"config": "snaplook.client.mixins.json",
-			"environment": "client"
-		}
-	],
 	"depends": {
 		"fabricloader": ">=0.16.10",
 		"minecraft": "~1.21.4",
 		"java": ">=21",
 		"fabric-api": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
 	}
 }
